@@ -1,5 +1,5 @@
 # Authentication_Beta
-*** AuthDemoV0.1
+ AuthDemoV0.1
 ## Tools in using
 * body-parser
 * ejs
