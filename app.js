@@ -34,7 +34,7 @@ app.get("/", function(req, res){
 });
 
 //secret route
-app.get("/secret", function(req, res){
+app.get("/secret",isLoggedIn, function(req, res){
     res.render("secret");
 });
 
@@ -59,20 +59,27 @@ app.post("/register", function(req, res){
     });
 });
 
-//LOGIN Routes
-//render login form
-app.get("/login", function(req, res){
-    res.render("login");
-});
 //login logic
+//middleware
 app.post("/login", passport.authenticate("local",{
         successRedirect: "/secret",
         failureRedirect: "/login"
     }), function(req, res){    
 });
 
+//Logout Route
+app.get("/logout", function(req, res){
+    req.logout();
+    res.redirect("/");
+});
 
-
+//check if logined 
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 //Listen the server
 app.listen(process.env.PORT, process.env.IP, function(){
