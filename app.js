@@ -59,6 +59,11 @@ app.post("/register", function(req, res){
     });
 });
 
+//LOGIN Routes
+//render login form
+app.get("/login", function(req, res){
+    res.render("login");
+});
 //login logic
 //middleware
 app.post("/login", passport.authenticate("local",{
