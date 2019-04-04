@@ -34,7 +34,7 @@ app.get("/secret", function(req, res){
 });
 
 
-//Listen the server
+//Listen the server(for LocalHost =>)
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server Started...  .  .  .    .");
 });
